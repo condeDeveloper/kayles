@@ -1,0 +1,13 @@
+{
+  "name": "kayles",
+  "version": "1.0.0",
+  "description": "O jogo de Kayles e a periodicidade dos jogos octais",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test testes/*.test.js",
+    "medir": "node ferramentas/medidor.js"
+  }
+}
