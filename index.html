@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kayles — o período que quase começa doze casas antes</title>
+<meta name="description" content="A sequ&#234;ncia de Grundy de Kayles medida at&#233; n = 2.000: per&#237;odo 12 a partir de 71, o valor 5 aparece uma &#250;nica vez, e nenhuma fila &#250;nica &#233; perdedora.">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<header>
+  <h1>Kayles</h1>
+  <p>Uma fila de pinos. Cada jogada derruba <strong>um</strong> pino ou <strong>dois vizinhos</strong>, e o buraco parte a fila em duas. Quem não tem o que derrubar, perde. É o exemplo clássico de jogo que vira uma tabela de números — e a tabela tem um comportamento que ninguém encomendou.</p>
+</header>
+
+<main>
+
+<section>
+  <h2>Jogue contra o motor</h2>
+  <div class="painel">
+    <div class="linha" style="margin-bottom:16px">
+      <label for="quantos">pinos:</label>
+      <input id="quantos" type="number" min="1" max="40" value="14">
+      <button id="novo" type="button">Nova fila</button>
+      <button id="dica" type="button">Como está a posição?</button>
+    </div>
+    <div id="pista"></div>
+    <p id="recado"></p>
+    <p id="placar"></p>
+  </div>
+</section>
+
+<section>
+  <h2>A sequência, e o período</h2>
+  <div class="painel">
+    <p style="margin:0 0 10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.88rem;color:var(--fraco)">
+      n=0 &nbsp;&nbsp;0 1 2 3 1 4 3 2 1 4 2 6<br>
+      n=12 &nbsp;4 1 2 7 1 4 3 2 1 4 6 7<br>
+      n=24 &nbsp;4 1 2 8 5 4 7 2 1 8 6 7<br>
+      n=36 &nbsp;4 1 2 3 1 4 7 2 1 8 2 7<br>
+      n=48 &nbsp;4 1 2 8 1 4 7 2 1 4 2 7<br>
+      n=60 &nbsp;4 1 2 8 1 4 7 2 1 8 6 7<br>
+      n=72 &nbsp;4 1 2 8 1 4 7 2 1 8 2 7
+    </p>
+    <p style="margin:0;color:var(--fraco);font-size:0.92rem">
+      O período é <span class="forte">12</span>, valendo a partir de <span class="forte">n = 71</span> —
+      medido, não citado, e conferido até n = 2.000. Abaixo disso, 16 valores desobedecem.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>O período quase começa doze casas antes</h2>
+  <div class="painel">
+    <table>
+      <thead><tr><th>bloco</th><th colspan="12">os doze valores</th></tr></thead>
+      <tbody>
+        <tr><td>n = 59…70</td><td>7</td><td>4</td><td>1</td><td>2</td><td>8</td><td>1</td><td>4</td><td>7</td><td>2</td><td>1</td><td>8</td><td class="aviso">6</td></tr>
+        <tr><td>n = 71…82</td><td>7</td><td>4</td><td>1</td><td>2</td><td>8</td><td>1</td><td>4</td><td>7</td><td>2</td><td>1</td><td>8</td><td class="forte">2</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 0;color:var(--fraco);font-size:0.92rem">
+      Os dois blocos são idênticos <span class="forte">exceto por um termo</span>: o último.
+      G(70) = 6, onde o período pediria 2. Um único valor em toda a sequência adia o começo do
+      ciclo em doze casas.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Nove valores, e um deles aparece uma vez só</h2>
+  <div class="painel">
+    <table>
+      <thead><tr><th>valor de Grundy</th><th>vezes em 2.001 termos</th><th>onde</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>1</td><td>só n = 0</td></tr>
+        <tr><td>1</td><td>500</td><td>por toda parte</td></tr>
+        <tr><td>2</td><td>497</td><td>por toda parte</td></tr>
+        <tr><td>3</td><td class="aviso">4</td><td>3, 6, 18, 39</td></tr>
+        <tr><td>4</td><td>336</td><td>por toda parte</td></tr>
+        <tr><td>5</td><td class="forte">1</td><td class="forte">só n = 28</td></tr>
+        <tr><td>6</td><td class="aviso">4</td><td>11, 22, 34, 70</td></tr>
+        <tr><td>7</td><td>331</td><td>por toda parte</td></tr>
+        <tr><td>8</td><td>327</td><td>por toda parte</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 0;color:var(--fraco);font-size:0.92rem">
+      Os três valores raros — 3, 5 e 6 — <span class="forte">só existem antes do período começar</span>,
+      e nunca mais voltam. E o zero aparece uma vez em dois mil: uma fila única de pinos
+      <span class="forte">nunca</span> é perdedora, por maior que seja.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>A família octal</h2>
+  <div class="painel">
+    <table>
+      <thead><tr><th>código</th><th>jogo</th><th>período</th><th>a partir de</th><th>exceções</th></tr></thead>
+      <tbody>
+        <tr><td class="forte">.77</td><td>Kayles</td><td>12</td><td>71</td><td>16</td></tr>
+        <tr><td>.137</td><td>xadrez de Dawson</td><td>34</td><td>52</td><td>5</td></tr>
+        <tr><td>.07</td><td>Kayles de Dawson</td><td>34</td><td>53</td><td>6</td></tr>
+        <tr><td>.4</td><td>só partir em duas</td><td>34</td><td>54</td><td>7</td></tr>
+        <tr><td>.17</td><td>Mock Turtles curto</td><td>34</td><td>33</td><td>4</td></tr>
+        <tr><td>.33</td><td>uma ou duas de uma ponta</td><td>3</td><td>0</td><td>0</td></tr>
+        <tr><td>.7</td><td>uma peça de onde quiser</td><td>2</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 0;color:var(--fraco);font-size:0.92rem">
+      Três jogos diferentes com o mesmo período 34 e começos em 52, 53 e 54 — porque são
+      <span class="forte">o mesmo jogo deslocado</span>: .07 é o .137 andado uma casa, e .4 é o .137
+      andado duas. Zero divergências em 499 termos.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://github.com/condeDeveloper/kayles">Código e números no GitHub</a> ·
+    JavaScript puro, sem dependência e sem build.
+  </p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
